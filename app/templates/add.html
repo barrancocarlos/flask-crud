@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% set active_page = "add" %}
+{% block title %}Add{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>Add User</h1>
+  <p class="lead">You can learn more about my website here.</p>
+</div>
+<form action ="/add" method="POST">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control form-control-lg" placeholder="Enter name" name="name">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" class="form-control form-control-lg" placeholder="Enter email" name="email">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

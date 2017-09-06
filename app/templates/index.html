@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% set active_page = "index" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>Flask Is Awesome</h1>
+  <p class="lead">Lets Rock!</p>
+
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for user in users %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <form action ="/" method="POST" style="float:left;margin-right:3%;">
+          <input type="hidden" name="user_id" value={{ user.id }}>
+          <input type="hidden" name="action" value="delete">
+          <button type="submit" class="btn btn-outline-danger">Delete</button>
+        </form>
+        <a href="/edit/id={{ user.id }}"><button class="btn btn-outline-info">Edit</button></a>
+      </td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

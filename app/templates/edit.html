@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% set active_page = "add" %}
+{% block title %}Edit{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>Edit User</h1>
+  <p class="lead">{{ user.username }}</p> 
+</div>
+<form action ="/edit" method="POST">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control form-control-lg" placeholder="Enter name" name="name" value="{{ user.username }}">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" class="form-control form-control-lg" placeholder="Enter email" name="email" value="{{ user.email }}">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
