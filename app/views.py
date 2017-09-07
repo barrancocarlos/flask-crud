@@ -23,7 +23,7 @@ def index():
 @app.route('/add',  methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
-        user = User(request.form["name"], request.form["email"])
+        user = User(request.form["username"], request.form["email"])
         db.session.add(user)
         db.session.commit()
         return redirect('/')
@@ -38,8 +38,13 @@ def add():
 @app.route('/edit/<id>',  methods = ['GET', 'POST'])
 def edit(id):
     if request.method == 'POST':
-        'algo hacemos'
-        print id
+        user_id = id
+        user = User.query.get(user_id)
+        user.username = request.form["name"]
+        user.email = request.form["email"]        
+        db.session.add(user)
+        db.session.commit()
+        return redirect('/')
     else:
         print "get edit"
         user_id = id
@@ -51,8 +56,7 @@ def edit(id):
 #Other edit method (need edit button to be <a href="/edit/?id={{ user.id }}"><button class="btn btn-outline-info">Edit</button></a>)
 # @app.route('/edit/',  methods = ['GET', 'POST'])
 # def edit():
-#     if request.method == 'POST':
-#         'algo hacemos'
+#     if request.method == 'POST':#
 #         print id
 #     else:
 #         print "get edit"

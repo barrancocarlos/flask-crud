@@ -4,9 +4,9 @@
 {% block body %}
 <div class="jumbotron">
   <h1>Edit User</h1>
-  <p class="lead">{{ user.username }}</p> 
+  <p class="lead">{{ user.username }}</p>
 </div>
-<form action ="/edit" method="POST">
+<form action ="/edit/{{ user.id }}" method="POST">
   <div class="form-group">
     <label>Name</label>
     <input type="text" class="form-control form-control-lg" placeholder="Enter name" name="name" value="{{ user.username }}">
