@@ -29,11 +29,6 @@ def add():
         return redirect('/')
     return render_template("add.html")
 
-# @app.route('/edit/<int:id>',  methods = ['GET', 'POST'])
-# def edit(id):
-#     user = User.query.filter_by(id=id)
-#     print user
-#     return render_template("edit.html", user=user)
 
 @app.route('/edit/<id>',  methods = ['GET', 'POST'])
 def edit(id):
@@ -41,7 +36,7 @@ def edit(id):
         user_id = id
         user = User.query.get(user_id)
         user.username = request.form["name"]
-        user.email = request.form["email"]        
+        user.email = request.form["email"]
         db.session.add(user)
         db.session.commit()
         return redirect('/')
